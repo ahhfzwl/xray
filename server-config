@@ -1,0 +1,52 @@
+{
+  "reverse": {
+    "bridges": [
+      {
+        "tag": "bridge",
+        "domain": "xray.by.now.cc"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    },
+    {
+      "tag": "interconn",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "81.28.12.12",
+            "port": 80,
+            "users": [
+              {
+                "id": "11112222-3333-4444-aaaa-bbbbccccdddd",
+                "encryption":"none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "headers": {
+            "Host": "gc-khh.by.now.cc"
+          }
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": ["bridge"],
+        "domain": ["full:xray.by.now.cc"],
+        "outboundTag": "interconn"
+      }
+    ]
+  }
+}
