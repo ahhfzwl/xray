@@ -1,0 +1,64 @@
+{
+  "reverse": {
+    "portals": [
+      {
+        "tag": "portal",
+        "domain": "xray.by.now.cc"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "external",
+      "port": 1080,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "11112222-3333-4444-aaaa-bbbbccccdddd"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vm"
+        }
+      }
+    },
+    {
+      "tag": "interconn",
+      "port": 8443,
+      "protocol": "vless",
+      "settings": {
+        "decryption":"none",
+        "clients": [
+          {
+            "id": "11112222-3333-4444-aaaa-bbbbccccdddd"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/admin/by.now.cc.cer",
+              "keyFile": "/admin/by.now.cc.key"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "inboundTag": ["external", "interconn"],
+        "outboundTag": "portal",
+        "type": "field"
+      }
+    ]
+  }
+}
