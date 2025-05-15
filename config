@@ -1,0 +1,26 @@
+{
+  "inbounds": [
+    {
+      "port": 8880,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "11112222-3333-4444-aaaa-bbbbccccdddd"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vm"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
+}
